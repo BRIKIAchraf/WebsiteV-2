@@ -2,11 +2,8 @@ import { useState } from 'react';
 import {
   Globe,
   Smartphone,
-  Monitor,
   Megaphone,
   Palette,
-  ScreenShare,
-  Search,
   Star,
   Rocket,
   Clock,
