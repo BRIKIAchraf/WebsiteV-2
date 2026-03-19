@@ -152,8 +152,8 @@ function App() {
 
   const renderProjects = () => (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 to-slate-900">
-      <div className="container mx-auto px-6 py-20">
-        <div className="space-y-4 mb-16 pt-32 sm:pt-40">
+      <div className="container mx-auto px-6 py-12">
+        <div className="space-y-4 mb-16 pt-8">
           <button
             onClick={() => setCurrentPage('home')}
             className="text-cyan-400 hover:text-cyan-300 font-semibold flex items-center gap-2 transition-colors">
@@ -200,10 +200,16 @@ function App() {
   return (
     <div className="min-h-screen bg-slate-950 flex flex-col font-sans">
       {/* Global Header */}
-      <header className="absolute top-0 left-0 w-full pt-4 pb-24 sm:pb-32 bg-gradient-to-b from-white via-white/90 to-transparent z-40 pointer-events-none">
-        <div className="container mx-auto flex justify-center items-center pointer-events-auto">
-          <div className="flex flex-col items-center cursor-pointer hover:scale-105 transition-transform" onClick={() => { setCurrentPage('home'); window.scrollTo(0,0); }}>
-            <img src="/logo.jpg" alt="Briki Ashraf Logo" className="h-28 sm:h-40 md:h-48 w-auto object-contain mix-blend-multiply" />
+      <header className="w-full bg-slate-950 py-4 sm:py-6 shadow-2xl border-b border-white/10 relative z-40">
+        <div className="container mx-auto px-4 sm:px-6 flex justify-center items-center">
+          <div className="flex items-center gap-4 sm:gap-6 cursor-pointer hover:scale-105 transition-transform" onClick={() => { setCurrentPage('home'); window.scrollTo(0,0); }}>
+            <div className="bg-white p-2 sm:p-3 rounded-xl sm:rounded-2xl shadow-lg shadow-cyan-500/20 shrink-0">
+              <img src="/logo.jpg" alt="Briki Ashraf Logo" className="h-16 sm:h-20 w-auto object-contain" />
+            </div>
+            <div className="flex flex-col justify-center">
+              <h2 className="text-2xl sm:text-3xl font-black tracking-wider text-white">BRIKI ASHRAF</h2>
+              <p className="text-[10px] sm:text-xs uppercase font-bold tracking-widest text-cyan-400">Web & Digital Solutions</p>
+            </div>
           </div>
         </div>
       </header>
