@@ -102,9 +102,6 @@ function App() {
 
           <div className="space-y-6 animate-fade-in max-w-2xl flex flex-col items-center">
             <div className="space-y-4">
-              <h1 className="text-5xl lg:text-6xl font-bold text-white leading-tight">
-                Votre Site Web Livré en seulement <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">24h</span>
-              </h1>
               <p className="text-2xl text-blue-200 font-semibold">
                 Simple, rapide et abordable
               </p>
@@ -202,7 +199,7 @@ function App() {
       {/* Global Header */}
       <header className="w-full bg-slate-950 py-4 sm:py-6 shadow-2xl border-b border-white/10 relative z-40">
         <div className="container mx-auto px-4 sm:px-6 flex justify-center items-center">
-          <div className="flex items-center gap-4 sm:gap-6 cursor-pointer hover:scale-105 transition-transform" onClick={() => { setCurrentPage('home'); window.scrollTo(0,0); }}>
+          <div className="flex items-center gap-4 sm:gap-6 cursor-pointer hover:scale-105 transition-transform" onClick={() => { setCurrentPage('home'); window.scrollTo(0, 0); }}>
             <div className="bg-white p-2 sm:p-3 rounded-xl sm:rounded-2xl shadow-lg shadow-cyan-500/20 shrink-0">
               <img src="/logo.jpg" alt="Briki Ashraf Logo" className="h-16 sm:h-20 w-auto object-contain" />
             </div>
