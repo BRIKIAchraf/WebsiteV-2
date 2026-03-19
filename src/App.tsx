@@ -136,10 +136,7 @@ function App() {
             </div>
 
             <div className="flex flex-col sm:flex-row justify-center gap-4 pt-6 w-full">
-              <button className="group bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-bold py-4 px-8 rounded-xl shadow-2xl shadow-blue-500/50 hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 w-full sm:w-auto">
-                Demander un devis gratuit
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
+
               <button
                 onClick={() => setCurrentPage('projects')}
                 className="backdrop-blur-md bg-white/10 hover:bg-white/20 border-2 border-white/30 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105 w-full sm:w-auto flex items-center justify-center">
