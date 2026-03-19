@@ -16,9 +16,7 @@ import {
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const [showWhatsApp, setShowWhatsApp] = useState(false);
-
-  const partners = ['Google', 'Meta', 'Shopify', 'WordPress', 'Stripe'];
-
+  const [selectedService, setSelectedService] = useState<{name: string, icon: any, tags: string[]} | null>(null);
   const projects = [
     {
       id: 1,
@@ -87,7 +85,7 @@ function App() {
   ];
 
   const renderHome = () => (
-    <div className="min-h-screen bg-cover bg-center relative overflow-hidden" style={{
+    <div className="min-h-screen bg-contain bg-no-repeat bg-center relative overflow-hidden bg-slate-950" style={{
       backgroundImage: `url('/ChatGPT_Image_Mar_16,_2026,_02_03_38_PM.png')`
     }}>
       <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/75 to-transparent"></div>
@@ -115,58 +113,26 @@ function App() {
                 Livré en seulement 24h
               </p>
             </div>
-
-            <div className="grid grid-cols-3 gap-3">
-              <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-xl p-4 text-center">
-                <Star className="w-6 h-6 text-yellow-400 fill-yellow-400 mx-auto mb-2" />
-                <p className="text-xl font-bold text-white">4.9/5</p>
-                <p className="text-xs text-blue-200 mt-1">Clients satisfaits</p>
-              </div>
-              <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-xl p-4 text-center">
-                <Rocket className="w-6 h-6 text-cyan-400 mx-auto mb-2" />
-                <p className="text-xl font-bold text-white">+120</p>
-                <p className="text-xs text-blue-200 mt-1">Projets réalisés</p>
-              </div>
-              <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-xl p-4 text-center">
-                <Clock className="w-6 h-6 text-green-400 mx-auto mb-2" />
-                <p className="text-xl font-bold text-white">24h</p>
-                <p className="text-xs text-blue-200 mt-1">Délai rapide</p>
-              </div>
-            </div>
-
-            <div className="space-y-2">
-              <p className="text-sm font-semibold text-blue-300">Ce que nous créons pour vous :</p>
-              <div className="grid grid-cols-2 gap-2">
-                <div className="flex items-center gap-2 text-white">
-                  <Globe className="w-4 h-4 text-cyan-300" />
-                  <span className="text-sm">Sites web</span>
-                </div>
-                <div className="flex items-center gap-2 text-white">
-                  <Smartphone className="w-4 h-4 text-cyan-300" />
-                  <span className="text-sm">Applications mobiles</span>
-                </div>
-                <div className="flex items-center gap-2 text-white">
-                  <Megaphone className="w-4 h-4 text-cyan-300" />
-                  <span className="text-sm">Publicité en ligne</span>
-                </div>
-                <div className="flex items-center gap-2 text-white">
-                  <Palette className="w-4 h-4 text-cyan-300" />
-                  <span className="text-sm">Design graphique</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="space-y-3">
-              <p className="text-sm font-semibold text-blue-300">Nos partenaires de confiance</p>
-              <div className="flex flex-wrap gap-3">
-                {partners.map((partner, index) => (
-                  <div key={index} className="backdrop-blur-md bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg px-4 py-2 transition-all duration-300">
-                    <span className="text-white font-semibold text-sm">{partner}</span>
+            <div className="space-y-3 pt-2">
+              <p className="text-sm font-semibold text-blue-300">Nos expertises (Cliquez pour voir nos réalisations) :</p>
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  { name: 'Sites web', icon: Globe, tags: ['Web', 'Vitrine', 'Marketplace', 'SEO', 'E-commerce'] },
+                  { name: 'Applications mobiles', icon: Smartphone, tags: ['Mobile', 'App'] },
+                  { name: 'Publicité en ligne', icon: Megaphone, tags: ['SEO', 'Marketing', 'B2B'] },
+                  { name: 'Design graphique', icon: Palette, tags: ['Design', 'Graphique'] }
+                ].map((service, idx) => (
+                  <div 
+                    key={idx} 
+                    onClick={() => setSelectedService(service)}
+                    className="flex flex-col sm:flex-row items-center gap-3 p-3 bg-white/5 border border-white/10 rounded-xl cursor-pointer hover:bg-white/10 hover:scale-105 hover:border-cyan-400/50 hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 group"
+                  >
+                    <service.icon className="w-6 h-6 text-cyan-300 group-hover:scale-110 transition-transform" />
+                    <span className="text-sm font-medium text-white text-center sm:text-left">{service.name}</span>
                   </div>
                 ))}
               </div>
             </div>
-
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <button className="group bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-bold py-4 px-8 rounded-xl shadow-2xl shadow-blue-500/50 hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2">
                 Demander un devis gratuit
@@ -263,6 +229,62 @@ function App() {
             Ouvrir WhatsApp
           </a>
           <p className="text-xs text-slate-500 mt-4 text-center">N° WhatsApp: +213 XXX XX XX XX</p>
+        </div>
+      )}
+
+      {/* Modal pour afficher les projets selon le service */}
+      {selectedService && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-sm animate-fade-in">
+          <div className="bg-slate-900 border border-white/10 rounded-2xl w-full max-w-5xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden relative">
+            <div className="p-6 border-b border-white/10 flex justify-between items-center bg-slate-900/50 backdrop-blur-md z-10 sticky top-0">
+              <div className="flex items-center gap-3">
+                <selectedService.icon className="w-8 h-8 text-cyan-400" />
+                <h2 className="text-2xl font-bold text-white">Projets : {selectedService.name}</h2>
+              </div>
+              <button 
+                onClick={() => setSelectedService(null)} 
+                className="text-slate-400 hover:text-white transition-colors bg-white/5 hover:bg-white/10 p-2 rounded-full"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+            
+            <div className="p-6 overflow-y-auto custom-scrollbar flex-1">
+              {projects.filter(p => p.tags.some(tag => selectedService.tags.includes(tag))).length > 0 ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {projects.filter(p => p.tags.some(tag => selectedService.tags.includes(tag))).map((project) => (
+                    <a href={project.link} target="_blank" rel="noopener noreferrer" key={project.id} className="group bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-cyan-400/50 transition-all duration-300 hover:scale-105 block flex flex-col h-full">
+                      <div className="relative h-48 overflow-hidden flex-shrink-0">
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60"></div>
+                      </div>
+                      <div className="p-5 flex flex-col flex-1 justify-between gap-3">
+                        <div>
+                          <h3 className="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors line-clamp-1">{project.title}</h3>
+                          <p className="text-blue-100 text-sm mt-1 line-clamp-2">{project.description}</p>
+                        </div>
+                        <div className="flex items-center text-cyan-400 text-sm font-semibold gap-1 group-hover:gap-2 transition-all mt-auto pt-2">
+                          Voir le projet <ExternalLink className="w-4 h-4" />
+                        </div>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              ) : (
+                <div className="flex flex-col items-center justify-center py-16 text-center space-y-4">
+                  <div className="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center mb-2">
+                    <Rocket className="w-8 h-8 text-cyan-400/50" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white">Nouveaux projets à venir !</h3>
+                  <p className="text-slate-400 max-w-md">Nous mettons régulièrement à jour notre portfolio. Revenez bientôt pour découvrir nos réalisations en {selectedService.name.toLowerCase()}.</p>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       )}
     </>
