@@ -200,15 +200,14 @@ function App() {
   return (
     <div className="min-h-screen bg-slate-950 flex flex-col font-sans">
       {/* Global Header */}
-      <header className="w-full bg-slate-950 py-6 shadow-2xl border-b border-white/5 relative z-30">
+      <header className="w-full bg-white py-6 shadow-xl border-b border-slate-200 relative z-30">
         <div className="container mx-auto flex justify-center items-center">
-          <div className="flex flex-col items-center gap-3 cursor-pointer hover:scale-105 transition-transform" onClick={() => { setCurrentPage('home'); window.scrollTo(0,0); }}>
-            <div className="bg-white p-3 sm:p-4 rounded-2xl shadow-lg shadow-cyan-500/30">
-              <img src="/logo.jpg" alt="Briki Ashraf Logo" className="h-16 sm:h-20 w-auto object-contain" />
-            </div>
-            <div className="text-center">
-              <h2 className="text-xl sm:text-2xl font-black tracking-wider text-white">BRIKI ASHRAF</h2>
-              <p className="text-[10px] sm:text-xs uppercase font-bold tracking-widest text-cyan-300">Web & Digital Solutions</p>
+          <div className="flex flex-col items-center gap-2 cursor-pointer hover:scale-105 transition-transform" onClick={() => { setCurrentPage('home'); window.scrollTo(0,0); }}>
+            <img src="/logo.jpg" alt="Briki Ashraf Logo" className="h-32 sm:h-48 md:h-56 w-auto object-contain" />
+            {/* Si le logo contient déjà le texte, on peut commenter la section ci-dessous, ou l'ajuster pour fond blanc */}
+            <div className="text-center hidden">
+              <h2 className="text-xl sm:text-2xl font-black tracking-wider text-slate-900">BRIKI ASHRAF</h2>
+              <p className="text-[10px] sm:text-xs uppercase font-bold tracking-widest text-cyan-600">Web & Digital Solutions</p>
             </div>
           </div>
         </div>
