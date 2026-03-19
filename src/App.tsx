@@ -61,7 +61,7 @@ function App() {
       id: 5,
       title: 'Eco Tech Energy',
       description: 'Site axé sur la transition énergétique et l\'écologie',
-      image: 'https://images.pexels.com/photos/4065876/pexels-photo-4065876.jpeg?auto=compress&cs=tinysrgb&w=600',
+      image: '/screenshots/eco-tech-energy.png',
       tags: ['Écologie', 'Web', 'Énergie'],
       link: 'https://www.eco-tech-energy.fr/'
     },
@@ -69,7 +69,7 @@ function App() {
       id: 6,
       title: 'Pro Inox Dépannage',
       description: 'Services de dépannage et réparation professionnels',
-      image: 'https://images.pexels.com/photos/3726826/pexels-photo-3726826.jpeg?auto=compress&cs=tinysrgb&w=600',
+      image: '/screenshots/pro-inox-depannage.png',
       tags: ['Dépannage', 'Réparation', 'Web'],
       link: 'https://pro-inox-depannage.fr/'
     },
@@ -96,21 +96,6 @@ function App() {
       backgroundImage: `url('/ChatGPT_Image_Mar_16,_2026,_02_03_38_PM.png')`
     }}>
       <div className="absolute inset-0 bg-slate-900/80 md:bg-slate-900/70"></div>
-
-      {/* Header avec logo */}
-      <header className="absolute top-0 left-0 w-full z-20 py-6 px-4 sm:px-8">
-        <div className="container mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-4 cursor-pointer hover:scale-105 transition-transform" onClick={() => window.location.reload()}>
-            <div className="bg-white p-2 sm:p-3 rounded-xl shadow-lg shadow-cyan-500/20">
-              <img src="/logo.jpg" alt="Briki Ashraf Logo" className="h-10 sm:h-12 w-auto object-contain" />
-            </div>
-            <div className="hidden sm:block">
-              <h2 className="text-2xl font-black tracking-wider text-white">BRIKI ASHRAF</h2>
-              <p className="text-[10px] uppercase font-bold tracking-widest text-cyan-300">Web & Digital Solutions</p>
-            </div>
-          </div>
-        </div>
-      </header>
 
       <div className="container mx-auto px-6 py-12 relative z-10">
         <div className="flex flex-col items-center justify-center min-h-screen text-center">
@@ -213,8 +198,25 @@ function App() {
   );
 
   return (
-    <>
-      {currentPage === 'home' ? renderHome() : renderProjects()}
+    <div className="min-h-screen bg-slate-950 flex flex-col font-sans">
+      {/* Global Header */}
+      <header className="w-full bg-slate-950 py-6 shadow-2xl border-b border-white/5 relative z-30">
+        <div className="container mx-auto flex justify-center items-center">
+          <div className="flex flex-col items-center gap-3 cursor-pointer hover:scale-105 transition-transform" onClick={() => { setCurrentPage('home'); window.scrollTo(0,0); }}>
+            <div className="bg-white p-3 sm:p-4 rounded-2xl shadow-lg shadow-cyan-500/30">
+              <img src="/logo.jpg" alt="Briki Ashraf Logo" className="h-16 sm:h-20 w-auto object-contain" />
+            </div>
+            <div className="text-center">
+              <h2 className="text-xl sm:text-2xl font-black tracking-wider text-white">BRIKI ASHRAF</h2>
+              <p className="text-[10px] sm:text-xs uppercase font-bold tracking-widest text-cyan-300">Web & Digital Solutions</p>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main className="flex-1 w-full flex flex-col relative">
+        {currentPage === 'home' ? renderHome() : renderProjects()}
+      </main>
 
       <a
         href="https://wa.me/393922437748?text=Bonjour%2C%20je%20souhaite%20discuter%20de%20mes%20besoins%20digitaux"
@@ -281,7 +283,7 @@ function App() {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
 
