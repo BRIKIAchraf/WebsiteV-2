@@ -15,14 +15,13 @@ import {
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
-  const [showWhatsApp, setShowWhatsApp] = useState(false);
   const [selectedService, setSelectedService] = useState<{ name: string, icon: any, tags: string[] } | null>(null);
   const projects = [
     {
       id: 1,
       title: 'Site Vitrine - Prestige Clean',
       description: 'Site vitrine pour une entreprise de nettoyage professionnel',
-      image: 'https://images.pexels.com/photos/3945683/pexels-photo-3945683.jpeg?auto=compress&cs=tinysrgb&w=600',
+      image: '/screenshots/prestige-clean.png',
       tags: ['Vitrine', 'Web', 'Nettoyage'],
       link: 'https://prestige-clean4-d.vercel.app/'
     },
@@ -30,7 +29,7 @@ function App() {
       id: 2,
       title: 'Krid Energy',
       description: 'Plateforme en ligne pour solutions énergétiques',
-      image: 'https://images.pexels.com/photos/5632399/pexels-photo-5632399.jpeg?auto=compress&cs=tinysrgb&w=600',
+      image: '/screenshots/krid-energy.png',
       tags: ['Énergie', 'Web', 'Services'],
       link: 'https://kridenergy.fr/'
     },
@@ -38,7 +37,7 @@ function App() {
       id: 3,
       title: 'Dclik Serrure',
       description: 'Site professionnel pour services de serrurerie',
-      image: 'https://images.pexels.com/photos/3862630/pexels-photo-3862630.jpeg?auto=compress&cs=tinysrgb&w=600',
+      image: '/screenshots/dclik-serrure.png',
       tags: ['Artisan', 'Web', 'SEO'],
       link: 'https://www.dclik-serrure.com/'
     },
@@ -46,9 +45,17 @@ function App() {
       id: 4,
       title: 'Serrure Safe',
       description: 'Site d\'intervention rapide en serrurerie',
-      image: 'https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=600',
+      image: '/screenshots/serrure-safe.png',
       tags: ['Serrurerie', 'Dépannage', 'Web'],
       link: 'https://www.serruresafe.fr/'
+    },
+    {
+      id: 9,
+      title: 'Débarras Environnement',
+      description: 'Site spécialiste en déchets dangereux et désamiantage',
+      image: '/screenshots/debarras-environnement.png',
+      tags: ['Environnement', 'Web', 'Services'],
+      link: '#'
     },
     {
       id: 5,
@@ -106,9 +113,9 @@ function App() {
             <p className="text-lg text-blue-100 leading-relaxed max-w-xl mx-auto">
               Nous concevons des sites web, applications et solutions digitales pour faire grandir votre entreprise.
             </p>
-            
+
             <div className="space-y-4 pt-4 w-full max-w-xl mx-auto">
-              <p className="text-sm font-semibold text-blue-300">Nos expertises (Cliquez pour voir nos réalisations) :</p>
+              <p className="text-sm font-semibold text-blue-300">Nos services (Cliquez pour voir nos réalisations) :</p>
               <div className="grid grid-cols-2 gap-3">
                 {[
                   { name: 'Sites web', icon: Globe, tags: ['Web', 'Vitrine', 'Marketplace', 'SEO', 'E-commerce'] },
@@ -127,7 +134,7 @@ function App() {
                 ))}
               </div>
             </div>
-            
+
             <div className="flex flex-col sm:flex-row justify-center gap-4 pt-6 w-full">
               <button className="group bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-bold py-4 px-8 rounded-xl shadow-2xl shadow-blue-500/50 hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 w-full sm:w-auto">
                 Demander un devis gratuit
@@ -197,35 +204,15 @@ function App() {
     <>
       {currentPage === 'home' ? renderHome() : renderProjects()}
 
-      <button
-        onClick={() => setShowWhatsApp(!showWhatsApp)}
+      <a
+        href="https://wa.me/393922437748?text=Bonjour%2C%20je%20souhaite%20discuter%20de%20mes%20besoins%20digitaux"
+        target="_blank"
+        rel="noopener noreferrer"
         className="fixed bottom-8 right-8 bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-2xl transition-all duration-300 hover:scale-110 z-40 flex items-center justify-center"
         aria-label="Contact WhatsApp"
       >
         <MessageCircle className="w-6 h-6" />
-      </button>
-
-      {showWhatsApp && (
-        <div className="fixed bottom-24 right-8 bg-white rounded-2xl shadow-2xl p-6 w-80 z-40 animate-fade-in">
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="text-xl font-bold text-slate-900">Contactez-nous</h3>
-            <button onClick={() => setShowWhatsApp(false)} className="text-slate-500 hover:text-slate-700">
-              <X className="w-5 h-5" />
-            </button>
-          </div>
-          <p className="text-slate-600 mb-4">Avez-vous des questions? Parlez-nous sur WhatsApp!</p>
-          <a
-            href="https://wa.me/1234567890?text=Bonjour%2C%20je%20souhaite%20discuter%20de%20mes%20besoins%20digitaux"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700 text-white font-bold py-3 rounded-xl transition-all duration-300 flex items-center justify-center gap-2"
-          >
-            <MessageCircle className="w-5 h-5" />
-            Ouvrir WhatsApp
-          </a>
-          <p className="text-xs text-slate-500 mt-4 text-center">N° WhatsApp: +213 XXX XX XX XX</p>
-        </div>
-      )}
+      </a>
 
       {/* Modal pour afficher les projets selon le service */}
       {selectedService && (
