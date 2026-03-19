@@ -97,6 +97,21 @@ function App() {
     }}>
       <div className="absolute inset-0 bg-slate-900/80 md:bg-slate-900/70"></div>
 
+      {/* Header avec logo */}
+      <header className="absolute top-0 left-0 w-full z-20 py-6 px-4 sm:px-8">
+        <div className="container mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-4 cursor-pointer hover:scale-105 transition-transform" onClick={() => window.location.reload()}>
+            <div className="bg-white p-2 sm:p-3 rounded-xl shadow-lg shadow-cyan-500/20">
+              <img src="/logo.png" alt="Briki Ashraf Logo" className="h-10 sm:h-12 w-auto object-contain" />
+            </div>
+            <div className="hidden sm:block">
+              <h2 className="text-2xl font-black tracking-wider text-white">BRIKI ASHRAF</h2>
+              <p className="text-[10px] uppercase font-bold tracking-widest text-cyan-300">Web & Digital Solutions</p>
+            </div>
+          </div>
+        </div>
+      </header>
+
       <div className="container mx-auto px-6 py-12 relative z-10">
         <div className="flex flex-col items-center justify-center min-h-screen text-center">
 
