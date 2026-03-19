@@ -16,7 +16,7 @@ import {
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const [showWhatsApp, setShowWhatsApp] = useState(false);
-  const [selectedService, setSelectedService] = useState<{name: string, icon: any, tags: string[]} | null>(null);
+  const [selectedService, setSelectedService] = useState<{ name: string, icon: any, tags: string[] } | null>(null);
   const projects = [
     {
       id: 1,
@@ -85,62 +85,57 @@ function App() {
   ];
 
   const renderHome = () => (
-    <div className="min-h-screen bg-contain bg-no-repeat bg-center relative overflow-hidden bg-slate-950" style={{
+    <div className="min-h-screen bg-contain md:bg-cover bg-no-repeat bg-center relative overflow-hidden bg-slate-950" style={{
       backgroundImage: `url('/ChatGPT_Image_Mar_16,_2026,_02_03_38_PM.png')`
     }}>
-      <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/75 to-transparent"></div>
+      <div className="absolute inset-0 bg-slate-900/80 md:bg-slate-900/70"></div>
 
       <div className="container mx-auto px-6 py-12 relative z-10">
-        <div className="grid items-center min-h-screen">
+        <div className="flex flex-col items-center justify-center min-h-screen text-center">
 
-          <div className="space-y-6 animate-fade-in max-w-xl">
-            <div className="space-y-3">
+          <div className="space-y-6 animate-fade-in max-w-2xl flex flex-col items-center">
+            <div className="space-y-4">
               <h1 className="text-5xl lg:text-6xl font-bold text-white leading-tight">
-                Votre Site Web <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">en 24h</span>
+                Votre Site Web Livré en seulement <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">24h</span>
               </h1>
               <p className="text-2xl text-blue-200 font-semibold">
                 Simple, rapide et abordable
               </p>
             </div>
 
-            <p className="text-lg text-blue-100 leading-relaxed">
-              Nous créons des sites web, applications et solutions digitales pour développer votre entreprise.
+            <p className="text-lg text-blue-100 leading-relaxed max-w-xl mx-auto">
+              Nous concevons des sites web, applications et solutions digitales pour faire grandir votre entreprise.
             </p>
-
-            <div className="backdrop-blur-md bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-400/30 rounded-2xl p-5 shadow-2xl">
-              <p className="text-lg text-white font-bold flex items-center gap-2">
-                <Rocket className="w-6 h-6 text-cyan-300" />
-                Livré en seulement 24h
-              </p>
-            </div>
-            <div className="space-y-3 pt-2">
+            
+            <div className="space-y-4 pt-4 w-full max-w-xl mx-auto">
               <p className="text-sm font-semibold text-blue-300">Nos expertises (Cliquez pour voir nos réalisations) :</p>
               <div className="grid grid-cols-2 gap-3">
                 {[
                   { name: 'Sites web', icon: Globe, tags: ['Web', 'Vitrine', 'Marketplace', 'SEO', 'E-commerce'] },
-                  { name: 'Applications mobiles', icon: Smartphone, tags: ['Mobile', 'App'] },
-                  { name: 'Publicité en ligne', icon: Megaphone, tags: ['SEO', 'Marketing', 'B2B'] },
-                  { name: 'Design graphique', icon: Palette, tags: ['Design', 'Graphique'] }
+                  { name: 'Applications', icon: Smartphone, tags: ['Mobile', 'App'] },
+                  { name: 'Publicité', icon: Megaphone, tags: ['SEO', 'Marketing', 'B2B'] },
+                  { name: 'Design', icon: Palette, tags: ['Design', 'Graphique'] }
                 ].map((service, idx) => (
-                  <div 
-                    key={idx} 
+                  <div
+                    key={idx}
                     onClick={() => setSelectedService(service)}
-                    className="flex flex-col sm:flex-row items-center gap-3 p-3 bg-white/5 border border-white/10 rounded-xl cursor-pointer hover:bg-white/10 hover:scale-105 hover:border-cyan-400/50 hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 group"
+                    className="flex flex-col sm:flex-row justify-center items-center gap-2 p-3 bg-white/5 border border-white/10 rounded-xl cursor-pointer hover:bg-white/10 hover:scale-105 hover:border-cyan-400/50 hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 group"
                   >
-                    <service.icon className="w-6 h-6 text-cyan-300 group-hover:scale-110 transition-transform" />
-                    <span className="text-sm font-medium text-white text-center sm:text-left">{service.name}</span>
+                    <service.icon className="w-5 h-5 text-cyan-300 group-hover:scale-110 transition-transform" />
+                    <span className="text-sm font-medium text-white">{service.name}</span>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="flex flex-col sm:flex-row gap-3 pt-2">
-              <button className="group bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-bold py-4 px-8 rounded-xl shadow-2xl shadow-blue-500/50 hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2">
+            
+            <div className="flex flex-col sm:flex-row justify-center gap-4 pt-6 w-full">
+              <button className="group bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-bold py-4 px-8 rounded-xl shadow-2xl shadow-blue-500/50 hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 w-full sm:w-auto">
                 Demander un devis gratuit
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
               <button
                 onClick={() => setCurrentPage('projects')}
-                className="backdrop-blur-md bg-white/10 hover:bg-white/20 border-2 border-white/30 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105">
+                className="backdrop-blur-md bg-white/10 hover:bg-white/20 border-2 border-white/30 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105 w-full sm:w-auto flex items-center justify-center">
                 Nos projets
               </button>
             </div>
@@ -241,14 +236,14 @@ function App() {
                 <selectedService.icon className="w-8 h-8 text-cyan-400" />
                 <h2 className="text-2xl font-bold text-white">Projets : {selectedService.name}</h2>
               </div>
-              <button 
-                onClick={() => setSelectedService(null)} 
+              <button
+                onClick={() => setSelectedService(null)}
                 className="text-slate-400 hover:text-white transition-colors bg-white/5 hover:bg-white/10 p-2 rounded-full"
               >
                 <X className="w-6 h-6" />
               </button>
             </div>
-            
+
             <div className="p-6 overflow-y-auto custom-scrollbar flex-1">
               {projects.filter(p => p.tags.some(tag => selectedService.tags.includes(tag))).length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
