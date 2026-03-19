@@ -37,7 +37,7 @@ function App() {
       id: 3,
       title: 'Dclik Serrure',
       description: 'Site professionnel pour services de serrurerie',
-      image: '/screenshots/dclik-serrure.png',
+      image: '/screenshots/dclik-serrure.jpg',
       tags: ['Artisan', 'Web', 'SEO'],
       link: 'https://www.dclik-serrure.com/'
     },
@@ -45,7 +45,7 @@ function App() {
       id: 4,
       title: 'Serrure Safe',
       description: 'Site d\'intervention rapide en serrurerie',
-      image: '/screenshots/serrure-safe.png',
+      image: '/screenshots/serrure-safe.jpg',
       tags: ['Serrurerie', 'Dépannage', 'Web'],
       link: 'https://www.serruresafe.fr/'
     },
@@ -102,7 +102,7 @@ function App() {
         <div className="container mx-auto flex items-center justify-between">
           <div className="flex items-center gap-4 cursor-pointer hover:scale-105 transition-transform" onClick={() => window.location.reload()}>
             <div className="bg-white p-2 sm:p-3 rounded-xl shadow-lg shadow-cyan-500/20">
-              <img src="/logo.png" alt="Briki Ashraf Logo" className="h-10 sm:h-12 w-auto object-contain" />
+              <img src="/logo.jpg" alt="Briki Ashraf Logo" className="h-10 sm:h-12 w-auto object-contain" />
             </div>
             <div className="hidden sm:block">
               <h2 className="text-2xl font-black tracking-wider text-white">BRIKI ASHRAF</h2>
