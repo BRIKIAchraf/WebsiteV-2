@@ -153,7 +153,7 @@ function App() {
   const renderProjects = () => (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 to-slate-900">
       <div className="container mx-auto px-6 py-20">
-        <div className="space-y-4 mb-16">
+        <div className="space-y-4 mb-16 pt-32 sm:pt-40">
           <button
             onClick={() => setCurrentPage('home')}
             className="text-cyan-400 hover:text-cyan-300 font-semibold flex items-center gap-2 transition-colors">
@@ -200,20 +200,15 @@ function App() {
   return (
     <div className="min-h-screen bg-slate-950 flex flex-col font-sans">
       {/* Global Header */}
-      <header className="w-full bg-white py-6 shadow-xl border-b border-slate-200 relative z-30">
-        <div className="container mx-auto flex justify-center items-center">
-          <div className="flex flex-col items-center gap-2 cursor-pointer hover:scale-105 transition-transform" onClick={() => { setCurrentPage('home'); window.scrollTo(0,0); }}>
-            <img src="/logo.jpg" alt="Briki Ashraf Logo" className="h-32 sm:h-48 md:h-56 w-auto object-contain" />
-            {/* Si le logo contient déjà le texte, on peut commenter la section ci-dessous, ou l'ajuster pour fond blanc */}
-            <div className="text-center hidden">
-              <h2 className="text-xl sm:text-2xl font-black tracking-wider text-slate-900">BRIKI ASHRAF</h2>
-              <p className="text-[10px] sm:text-xs uppercase font-bold tracking-widest text-cyan-600">Web & Digital Solutions</p>
-            </div>
+      <header className="absolute top-0 left-0 w-full pt-4 pb-24 sm:pb-32 bg-gradient-to-b from-white via-white/90 to-transparent z-40 pointer-events-none">
+        <div className="container mx-auto flex justify-center items-center pointer-events-auto">
+          <div className="flex flex-col items-center cursor-pointer hover:scale-105 transition-transform" onClick={() => { setCurrentPage('home'); window.scrollTo(0,0); }}>
+            <img src="/logo.jpg" alt="Briki Ashraf Logo" className="h-28 sm:h-40 md:h-48 w-auto object-contain mix-blend-multiply" />
           </div>
         </div>
       </header>
 
-      <main className="flex-1 w-full flex flex-col relative">
+      <main className="flex-1 w-full flex flex-col relative min-h-screen">
         {currentPage === 'home' ? renderHome() : renderProjects()}
       </main>
 
