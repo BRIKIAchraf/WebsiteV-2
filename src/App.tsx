@@ -95,7 +95,7 @@ function App() {
     <div className="min-h-screen bg-contain md:bg-cover bg-no-repeat bg-center relative overflow-hidden bg-slate-950" style={{
       backgroundImage: `url('/ChatGPT_Image_Mar_16,_2026,_02_03_38_PM.png')`
     }}>
-      <div className="absolute inset-0 bg-slate-900/80 md:bg-slate-900/70"></div>
+      <div className="absolute inset-0 bg-slate-900/50 md:bg-slate-900/40"></div>
 
       <div className="container mx-auto px-6 py-12 relative z-10">
         <div className="flex flex-col items-center justify-center min-h-screen text-center">
